@@ -31,4 +31,12 @@ internal class DNIShould {
         }
     }
 
+    @Test
+    fun `fail when the sum doesn't match the letter`(){
+        //64620835N
+        assertFailsWith<IllegalArgumentException>{
+            DNI("64620834N")
+        }
+    }
+
 }
