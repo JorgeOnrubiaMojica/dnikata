@@ -1,10 +1,14 @@
 class DNI(private val value: String, private val VALID_LENGTH: Int = 9) {
 
     init {
-        assertValidLength()
-        assertLastCharacterIsLetter()
+
+        val pattern = Regex("^[0-9]{8}[A-Z]$")
+
+        if (!pattern.containsMatchIn(value)){
+            throw IllegalArgumentException()
+        }
+
         assertLetterIsNotIorO()
-        assertFirst8CharactersAreADigit()
 
     }
 
