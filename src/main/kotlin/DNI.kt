@@ -11,10 +11,6 @@ class DNI(private val value: String) {
     }
 
     private fun assertLastLetterIsCorrect() {
-        val listNumbers = value.subSequence(0, value.length - 1).toList()
-
-        var sum = 0
-        listNumbers.forEach { sum += it.digitToInt() }
 
         val remainderToLetter: Map<Int, Char> = mapOf(
             0 to 'T',
@@ -42,7 +38,7 @@ class DNI(private val value: String) {
             22 to 'E'
         )
 
-        val mod = sum % 23
+        val mod = value.subSequence(0, value.length-1).toString().toInt() % 23
         if (value.last() != remainderToLetter[mod]) {
             throw IllegalArgumentException()
         }

@@ -1,5 +1,6 @@
 import org.junit.jupiter.api.Test
 import kotlin.test.assertFailsWith
+import kotlin.test.assertIs
 
 internal class DNIShould {
 
@@ -33,10 +34,14 @@ internal class DNIShould {
 
     @Test
     fun `fail when the sum doesn't match the letter`(){
-        //64620835N
         assertFailsWith<IllegalArgumentException>{
             DNI("64620834N")
         }
+    }
+
+    @Test
+    fun `create a DNI`(){
+        assertIs<DNI>(DNI("64620835N"))
     }
 
 }
