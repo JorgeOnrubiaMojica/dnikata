@@ -24,4 +24,11 @@ internal class DNIShould {
         }
     }
 
+    @Test
+    fun `fail when the first 8 characters are not a digit`(){
+        assertFailsWith<IllegalArgumentException> {
+            DNI("A4444444T")
+        }
+    }
+
 }
